@@ -1,0 +1,21 @@
+<div class="room">
+  <h4 class="pb-4">検索結果：<%= @hotels.count %>件</h4>
+  <div class="row">
+    <% @hotels.each do |hotel| %>
+      <div class="col-sm col-xl-3">
+        <div class="room-frame-inner">
+          <%= link_to hotel_path(hotel) do %>
+            <div class="room-image-out">
+              <%= attachment_image_tag hotel, :image, fallback: "no-image.png", class:"room-image" %>
+            </div>
+            <div class="room-profile">
+              <p class="room-profile-name"><%= hotel.name %></p>
+              <p class="room-profile-city"><%= hotel.address %></p>
+              <p class="room-profile-price"><%= hotel.price %>円</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

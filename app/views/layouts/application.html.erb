@@ -11,6 +11,72 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left-nav">
+          <%= link_to root_path do %>
+            <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png">
+          <% end %>
+          <%= form_with url: hotels_path, method: :get, local: true do |f| %>
+            <%= f.search_field :area, placeholder:"エリア検索", class:"form-control mb-4" %>
+            <%= f.search_field :keyword, placeholder:"キーワード検索", class:"form-control mb-4" %>
+            <%= f.submit "探す", style:"display:none" %>
+          <% end %>
+        </div>
+        <div class="header-right-nav" id="header-right-nav-id">
+          <% if user_signed_in? %>
+            <div class="nav-item">
+              <%= @user.username %>
+            </div>
+            <div class="nav-item" >
+              <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "host-icon" %>
+              <ul class="header-nav-menu display_n" id="header-nav-menu-id">
+                <li>
+                  <%= link_to "ルーム登録", new_hotel_path %>
+                </li>
+                <li>
+                  <%= link_to "予約済みルーム一覧", reservations_path %>
+                </li>
+                <li>
+                  <%= link_to "登録済みルーム一覧", posts_hotels_path %>
+                </li>
+                <li>
+                  <%= link_to "設定", account_users_path %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか?"} %>
+                </li>
+              </ul>
+            </div>
+          <% else %>
+            <%= link_to("ログイン", new_user_session_path, {class:"btn btn-primary"}) %>
+            <%= link_to("登録する", new_user_registration_path, {class:"btn btn-secondary"}) %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    
+    <% if flash[:notice] %>
+      <div class="notifications">
+        <div class="notice">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if flash[:alert] %>
+      <div>
+        <div>
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+
     <%= yield %>
+    
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
+    <%= javascript_pack_tag 'users/usermenu.js' %>
   </body>
 </html>

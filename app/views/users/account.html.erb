@@ -1,0 +1,43 @@
+<div class="container-fiuld user">
+  <div>
+    <%= render "shared/partial" %>
+    <div class="col-md user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <h5>
+              アカウント
+            </h5>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md" for="email">
+              メールアドレス
+            </label>
+            <div class="col-md">
+              <%= @user.email%>
+            </div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md" for="password">
+              パスワード
+            </label>
+            <div class="col-md">
+              *********
+            </div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <%= link_to("編集", edit_user_registration_path, {class:"btn btn-primary"}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'users/account.js' %>
