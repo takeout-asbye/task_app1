@@ -1,0 +1,34 @@
+<div class="container room-show">
+  <div class="row">
+    <div class="col-md">
+      <%= attachment_image_tag @hotel, :image, fallback: "no-image.png", class: "room-show-image" %>
+      <div class="room-show-detile">
+        <div class="room-show-detile-icon">
+          <%= link_to (attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "host-icon"), "/" %>
+        </div>
+        <div class="room-show-profile">
+          <p class="room-show-profile-name"><%= @hotel.name %></p>
+          <p class="room-show-profile-address"><%= @hotel.address %></p>
+        </div>
+      </div>
+      <p class="room-show-detile-content"><%= @hotel.introduction %></p>
+    </div>
+    <div class="col-md">
+      <div class="room-show-nav">
+        <h5 class="price-icon"><%= @hotel.price %>円/日</h5>
+        <div class="room-show-date-select">
+          <%= form_with model: @reservation, url: confirm_reservations_path do |f| %>
+            <%= f.label :start_day, "開始日" %>
+            <%= f.date_field :start_day, class:"form-control mb-4" %>
+            <%= f.label :finish_day, "終了日" %>
+            <%= f.date_field :finish_day, class:"form-control mb-4"  %>
+            <%= f.label :number_of_people, "人数" %>
+            <%= f.number_field :number_of_people, class:"form-control mb-4"  %>
+            <%= f.hidden_field :hotel_id, :value => @hotel.id %>
+            <%= f.submit "予約する", class:"btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>    
+</div>

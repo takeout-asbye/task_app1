@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_day: 2021-10-31 02:26:03
+  finish_day: 2021-10-31 02:26:03
+  number_of_people: 1
+  days_of_use: 1
+  total_fee: 
+  user_id: 1
+  hotel_id: 1
+
+two:
+  start_day: 2021-10-31 02:26:03
+  finish_day: 2021-10-31 02:26:03
+  number_of_people: 1
+  days_of_use: 1
+  total_fee: 
+  user_id: 1
+  hotel_id: 1

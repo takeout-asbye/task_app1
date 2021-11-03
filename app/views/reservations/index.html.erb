@@ -1,0 +1,39 @@
+<div class="container-fiuld reservations">
+  <h4 class="pb-4">予約済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>予約確定日時</th>
+      </tr>  
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <% @hotels.each do |hotel| %>
+          <% if reservation.hotel_id == hotel.id %>
+            <tr>
+              <td>
+                <%= link_to (attachment_image_tag hotel, :image, fallback: "no-image.png", class:"reservations-image"), hotel_path(hotel) %>
+              </td>
+              <td class="posts-name">
+                <%= link_to hotel.name, hotel_path(hotel) %>
+              </td>
+              <td class="posts-content"><%= hotel.introduction %></td>
+              <td class="price-icon"><%= reservation.total_fee%>円</td>
+              <td><%= reservation.start_day.strftime('%Y-%m-%d')%></td>
+              <td><%= reservation.finish_day.strftime('%Y-%m-%d')%></td>
+              <td><%= reservation.created_at %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+

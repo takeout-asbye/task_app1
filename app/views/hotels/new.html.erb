@@ -1,0 +1,58 @@
+<div class="container-fiuld room-new">
+  <div class="row">
+    <div class="room-nav">
+      <ul>
+        <li class="active">
+          <%= link_to "基本情報", "new_hotel_path" %>
+        </li>
+      </ul>
+    </div>
+    <div class="room-view col-lg-10">
+      <div class="room-view-box">
+        <%= form_with model:@hotel do |f| %>
+          <div class="update-content">
+            <div class="row">
+              <h5>ルーム情報登録</h5>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :name, "ルーム名", class:"col-md" %>
+              <%= f.text_field :name, class:"col-md form-control" %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :introduction, "ルーム紹介", class:"col-md" %>
+              <%= f.text_area :introduction, class:"col-md form-control" %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :price, "料金", class:"col-md"%>
+              <%= f.text_field :price, class:"col-md form-control" %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :address, "住所", class:"col-md" %>
+              <%= f.text_field :address, class:"col-md form-control" %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :image, "ルーム画像", class:"col-md" %>
+              <%= f.file_field :image, class:"col-md" %>
+            </div>
+          </div>
+            <%= f.hidden_field :user_id, value:@user.id, class:"col-md" %>
+          <div class="update-content">
+            <div class="row">
+              <%= f.submit "登録", class:"btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

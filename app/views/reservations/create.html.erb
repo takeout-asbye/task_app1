@@ -1,0 +1,40 @@
+<div class="container-fiuld user">
+  <div class="row">
+    <div class="col-md-12 user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md-3">予約した部屋</label>
+            <div class="col-md-9">
+              <%= link_to @hotel.name, hotel_path(@hotel) %>
+            </div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md-3">開始日</label>
+            <div class="col-md-9">
+              <%= @reservation.start_day.strftime('%Y年%m月%d日') %>
+            </div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md-3">終了日</label>
+            <div class="col-md-9">
+              <%= @reservation.finish_day.strftime('%Y年%m月%d日') %>
+            </div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <label class="col-md-3">価格</label>
+            <div class="col-md-9">
+              <%= @reservation.total_fee %>円
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
